@@ -3,8 +3,7 @@
         "myth": "mythril/myth",
         "slither": "trailofbits/eth-security-toolbox",
         "echidna": "echidna",
-        "manticore": "trailofbits/manticore",
-        "maian": "maian"
+        "manticore": "trailofbits/manticore"
     },
     "myth": {
         "first_condition": {

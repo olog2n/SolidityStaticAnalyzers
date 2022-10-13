@@ -214,123 +214,124 @@ async function start() {
                 console.log(stdout);
                 console.log(stderr);
             });
-        } else if (current_tool == "maian") {
-            execSync(`wget -P ${process.env.PWD}/${Highest}/ https://github.com/ethereum/solidity/releases/download/v${Highest}/solc-static-linux`, (error, stdout, stderr) => {
-                if (error) {
-                    console.log(error);
-                    return;
-                }
-                console.log(stdout);
-                console.log(stderr);
-            });
+        } 
+        // else if (current_tool == "maian") {
+        //     execSync(`wget -P ${process.env.PWD}/${Highest}/ https://github.com/ethereum/solidity/releases/download/v${Highest}/solc-static-linux`, (error, stdout, stderr) => {
+        //         if (error) {
+        //             console.log(error);
+        //             return;
+        //         }
+        //         console.log(stdout);
+        //         console.log(stderr);
+        //     });
 
-            fs.chmod(`${process.env.PWD}/${Highest}/solc-static-linux`, '777', (err) => {
-                if(err) throw err;
-                // console.log("solc-static-linux changed");
-            });
+        //     fs.chmod(`${process.env.PWD}/${Highest}/solc-static-linux`, '777', (err) => {
+        //         if(err) throw err;
+        //         // console.log("solc-static-linux changed");
+        //     });
 
-            //NOTE If it gives an error EPERM or smth like, change owner of directory: $ sudo chown -R ubuntu:ubuntu MAIAN-master/
+        //     //NOTE If it gives an error EPERM or smth like, change owner of directory: $ sudo chown -R ubuntu:ubuntu MAIAN-master/
 
-            fs.symlink(`${process.env.PWD}/${Highest}/solc-static-linux`, `${process.env.PWD}/MAIAN-master/venv/bin/solc`, (err) => {
-                if(err.code != 'EEXIST') throw err;
-                // console.log("solc-static-linux symlink added");
-            })
+        //     fs.symlink(`${process.env.PWD}/${Highest}/solc-static-linux`, `${process.env.PWD}/MAIAN-master/venv/bin/solc`, (err) => {
+        //         if(err.code != 'EEXIST') throw err;
+        //         // console.log("solc-static-linux symlink added");
+        //     })
 
-            execSync(`./${Highest}/solc-static-linux ${argument.toolArgs[1]}  --combined-json bin --overwrite -o .`, (error, stdout, stderr) => {
-                if (error) {
-                    console.log(error);
-                    return;
-                }
-                console.log(stdout);
-                console.log(stderr);
-            })
+        //     execSync(`./${Highest}/solc-static-linux ${argument.toolArgs[1]}  --combined-json bin --overwrite -o .`, (error, stdout, stderr) => {
+        //         if (error) {
+        //             console.log(error);
+        //             return;
+        //         }
+        //         console.log(stdout);
+        //         console.log(stderr);
+        //     })
 
-            const contracts = require("./combined.json").contracts;
+        //     const contracts = require("./combined.json").contracts;
 
-            let keys = [];
-            let bins = [];
-            for(key in contracts) {
-                keys.push(key);
-            }
+        //     let keys = [];
+        //     let bins = [];
+        //     for(key in contracts) {
+        //         keys.push(key);
+        //     }
     
-            for(kkey of keys) {
-                bins.push(contracts[kkey].bin);
-            }
+        //     for(kkey of keys) {
+        //         bins.push(contracts[kkey].bin);
+        //     }
     
-            bins.sort();
+        //     bins.sort();
 
-            const outName = argument.toolArgs[1].slice(0, argument.toolArgs[1].length).split('/');
+        //     const outName = argument.toolArgs[1].slice(0, argument.toolArgs[1].length).split('/');
 
-            const outFile = outName[outName.length - 1].split('.')[0];
+        //     const outFile = outName[outName.length - 1].split('.')[0];
         
-            fs.writeFileSync("proceed.bin", bins[bins.length - 1]);
+        //     fs.writeFileSync("proceed.bin", bins[bins.length - 1]);
 
-            this.filehandle = fs.readFileSync(`${__dirname}/.maian-start`);
-            this.res = this.filehandle.toString().replace(/PATH/gi, `${process.env.PWD}/proceed.bin`);
-            fs.writeFileSync(`${__dirname}/maian-start-0`, this.res);
+        //     this.filehandle = fs.readFileSync(`${__dirname}/.maian-start`);
+        //     this.res = this.filehandle.toString().replace(/PATH/gi, `${process.env.PWD}/proceed.bin`);
+        //     fs.writeFileSync(`${__dirname}/maian-start-0`, this.res);
             
-            this.filehandle = fs.readFileSync(`${__dirname}/maian-start-0`);
-            this.res = this.filehandle.toString().replace(/STATUS/gi, '0');
-            fs.writeFileSync(`${__dirname}/maian-start-0`, this.res);
+        //     this.filehandle = fs.readFileSync(`${__dirname}/maian-start-0`);
+        //     this.res = this.filehandle.toString().replace(/STATUS/gi, '0');
+        //     fs.writeFileSync(`${__dirname}/maian-start-0`, this.res);
 
-            fs.chmod(`${process.env.PWD}/maian-start-0`, '777', (err) => {
-                if(err) throw err;
-                // console.log("solc-static-linux changed");
-            });
+        //     fs.chmod(`${process.env.PWD}/maian-start-0`, '777', (err) => {
+        //         if(err) throw err;
+        //         // console.log("solc-static-linux changed");
+        //     });
 
-            execSync(`bash ./maian-start-0 >> out/${outFile}-0.res`, (error, stdout, stderr) => {
-                if (error) {
-                    console.log(error);
-                    return;
-                }
-                console.log(stdout);
-                console.log(stderr);
-            });
+        //     execSync(`bash ./maian-start-0 >> out/${outFile}-0.res`, (error, stdout, stderr) => {
+        //         if (error) {
+        //             console.log(error);
+        //             return;
+        //         }
+        //         console.log(stdout);
+        //         console.log(stderr);
+        //     });
 
-            this.filehandle = fs.readFileSync(`${__dirname}/.maian-start`);
-            this.res = this.filehandle.toString().replace(/PATH/gi, `${process.env.PWD}/proceed.bin`);
-            fs.writeFileSync(`${__dirname}/maian-start-1`, this.res);
+        //     this.filehandle = fs.readFileSync(`${__dirname}/.maian-start`);
+        //     this.res = this.filehandle.toString().replace(/PATH/gi, `${process.env.PWD}/proceed.bin`);
+        //     fs.writeFileSync(`${__dirname}/maian-start-1`, this.res);
 
-            this.filehandle = fs.readFileSync(`${__dirname}/maian-start-1`);
-            this.res = this.filehandle.toString().replace(/STATUS/gi, '1');
-            fs.writeFileSync(`${__dirname}/maian-start-1`, this.res);
+        //     this.filehandle = fs.readFileSync(`${__dirname}/maian-start-1`);
+        //     this.res = this.filehandle.toString().replace(/STATUS/gi, '1');
+        //     fs.writeFileSync(`${__dirname}/maian-start-1`, this.res);
 
-            fs.chmod(`${process.env.PWD}/maian-start-1`, '777', (err) => {
-                if(err) throw err;
-                // console.log("solc-static-linux changed");
-            });
+        //     fs.chmod(`${process.env.PWD}/maian-start-1`, '777', (err) => {
+        //         if(err) throw err;
+        //         // console.log("solc-static-linux changed");
+        //     });
 
-            execSync(`bash ./maian-start-1 >> out/${outFile}-1.res`, (error, stdout, stderr) => {
-                if (error) {
-                    console.log(error);
-                    return;
-                }
-                console.log(stdout);
-                console.log(stderr);
-            });
+        //     execSync(`bash ./maian-start-1 >> out/${outFile}-1.res`, (error, stdout, stderr) => {
+        //         if (error) {
+        //             console.log(error);
+        //             return;
+        //         }
+        //         console.log(stdout);
+        //         console.log(stderr);
+        //     });
 
-            this.filehandle = fs.readFileSync(`${__dirname}/.maian-start`);
-            this.res = this.filehandle.toString().replace(/PATH/gi, `${process.env.PWD}/proceed.bin`);
-            fs.writeFileSync(`${__dirname}/maian-start-2`, this.res);
+        //     this.filehandle = fs.readFileSync(`${__dirname}/.maian-start`);
+        //     this.res = this.filehandle.toString().replace(/PATH/gi, `${process.env.PWD}/proceed.bin`);
+        //     fs.writeFileSync(`${__dirname}/maian-start-2`, this.res);
 
-            this.filehandle = fs.readFileSync(`${__dirname}/maian-start-2`);
-            this.res = this.filehandle.toString().replace(/STATUS/gi, '2');
-            fs.writeFileSync(`${__dirname}/maian-start-2`, this.res);
+        //     this.filehandle = fs.readFileSync(`${__dirname}/maian-start-2`);
+        //     this.res = this.filehandle.toString().replace(/STATUS/gi, '2');
+        //     fs.writeFileSync(`${__dirname}/maian-start-2`, this.res);
 
-            fs.chmod(`${process.env.PWD}/maian-start-2`, '777', (err) => {
-                if(err) throw err;
-                // console.log("solc-static-linux changed");
-            });
+        //     fs.chmod(`${process.env.PWD}/maian-start-2`, '777', (err) => {
+        //         if(err) throw err;
+        //         // console.log("solc-static-linux changed");
+        //     });
 
-            execSync(`bash ./maian-start-2 >> out/${outFile}-2.res`, (error, stdout, stderr) => {
-                if (error) {
-                    console.log(error);
-                    return;
-                }
-                console.log(stdout);
-                console.log(stderr);
-            });
-        }
+        //     execSync(`bash ./maian-start-2 >> out/${outFile}-2.res`, (error, stdout, stderr) => {
+        //         if (error) {
+        //             console.log(error);
+        //             return;
+        //         }
+        //         console.log(stdout);
+        //         console.log(stderr);
+        //     });
+        // }
     }    
 }
 

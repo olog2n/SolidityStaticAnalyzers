@@ -1,0 +1,47 @@
+#!/bin/bash
+docker pull mythril/myth
+docker pull trailofbits/eth-security-toolbox
+docker pull trailofbits/manticore
+docker build ./docker/echidna/ -t echidna
+#docker build ./docker/maian -t maian
+# install maian
+# apt update && \
+    # apt -y install\
+    # wget \
+    # curl \
+    # unzip
+# 
+# apt -y install\
+    # python3-pip \
+    # python3.8-venv
+# 
+# mkdir out
+# 
+# # download geth
+# wget https://gethstore.blob.core.windows.net/builds/geth-alltools-linux-amd64-1.10.19-23bee162.tar.gz -O geth.tar.gz
+# 
+# install geth
+# tar -xvzf geth.tar.gz
+# 
+# # download z3
+# wget https://github.com/Z3Prover/z3/archive/refs/heads/master.zip -O z3.zip
+# 
+# # install z3
+# unzip z3.zip && cd z3-master && \
+    # python3 scripts/mk_make.py && \
+    # cd build && \
+    # make && \
+    # make install
+# 
+# # Absolute path: /home/ubuntu
+# 
+# wget https://github.com/smartbugs/MAIAN/archive/refs/heads/master.zip -O MAIAN.zip
+# 
+# unzip MAIAN.zip && cd MAIAN-master && \
+    # python3 -m venv venv && \
+    # source venv/bin/activate && \
+    # pip install --upgrade pip && \
+    # pip install wheel && \
+    # pip install web3 z3-solver
+# 
+# ln -s /home/ubuntu/checker/src/tools_wrapper/geth-alltools-linux-amd64-1.10.19-23bee162/geth /home/ubuntu/checker/src/tools_wrapper/MAIAN-master/venv/bin/geth
