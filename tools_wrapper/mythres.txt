@@ -1,0 +1,551 @@
+Highest version:  pragma solidity 0.6.10;
+docker run -v /home/ubuntu/checker/src/tools_wrapper:/tmp mythril/myth analyze /tmp/contracts/test_contracts/0xfF20817765cB7f73d4bde2e66e067E58D11095C2.sol --solv 0.6.10 --max-depth 22
+The analysis was completed successfully. No issues were detected.
+
+
+
+
+0.06user 0.04system 0:23.90elapsed 0%CPU (0avgtext+0avgdata 49364maxresident)k
+0inputs+0outputs (0major+9219minor)pagefaults 0swaps
+
+Highest version:  pragma solidity 0.6.10;
+docker run -v /home/ubuntu/checker/src/tools_wrapper:/tmp mythril/myth analyze /tmp/contracts/test_contracts/0xfF20817765cB7f73d4bde2e66e067E58D11095C2.sol --solv 0.6.10 --max-depth 22
+The analysis was completed successfully. No issues were detected.
+
+
+
+
+0.07user 0.03system 0:23.40elapsed 0%CPU (0avgtext+0avgdata 49160maxresident)k
+0inputs+0outputs (2major+9388minor)pagefaults 0swaps
+
+Highest version:  pragma solidity 0.7.5;
+docker run -v /home/ubuntu/checker/src/tools_wrapper:/tmp mythril/myth analyze /tmp/contracts/test_contracts/0x92D6C1e31e14520e676a687F0a93788B716BEff5.sol --solv 0.7.5 --max-depth 22
+The analysis was completed successfully. No issues were detected.
+
+
+
+
+0.16user 0.12system 22:26.07elapsed 0%CPU (0avgtext+0avgdata 50324maxresident)k
+0inputs+0outputs (1major+9723minor)pagefaults 0swaps
+
+Highest version:  pragma solidity ^0.5.2;
+docker run -v /home/ubuntu/checker/src/tools_wrapper:/tmp mythril/myth analyze /tmp/contracts/test_contracts/0xfa86cabff17a2628a4c875ebc3260191b08448ec.sol --solv 0.5.2 --max-depth 22
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Storage
+Function name: get_ayat_coordinates_by_index(bytes32,uint256)
+PC address: 3627
+Estimated Gas Usage: 1300 - 1963
+An assertion violation was triggered.
+It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values). This issue is reported for internal compiler generated code.
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x40000010000000020, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [CREATOR], function: get_ayat_coordinates_by_index(bytes32,uint256), txdata: 0xd24a31b700000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Medium
+Contract: Storage
+Function name: all_coordinates(bytes32,uint256)
+PC address: 3723
+Estimated Gas Usage: 1212 - 1497
+An assertion violation was triggered.
+It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
+--------------------
+In file: /tmp/contracts/test_contracts/0xfa86cabff17a2628a4c875ebc3260191b08448ec.sol:550
+
+mapping(bytes32 => coord[]) public all_coordinates
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x1000000000000002, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [SOMEGUY], function: all_coordinates(bytes32,uint256), txdata: 0xe2375b0800000000000000000000000000000000000000000000000000000000000000000200000000000000000101000001000200000100020000010010000120108080, value: 0x0
+
+
+
+
+
+0.18user 0.11system 24:18.55elapsed 0%CPU (0avgtext+0avgdata 50864maxresident)k
+0inputs+0outputs (0major+9611minor)pagefaults 0swaps
+
+Highest version:  pragma solidity ^0.5.0;
+docker run -v /home/ubuntu/checker/src/tools_wrapper:/tmp mythril/myth analyze /tmp/contracts/test_contracts/0xfa89d6221a031ba796ccac1edae67d8c2b2fd9b1.sol --solv 0.5.0 --max-depth 22
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Low
+Contract: STONToken
+Function name: approveAndCall(address,uint256,bytes)
+PC address: 4937
+Estimated Gas Usage: 9490 - 68407
+A call to a user-supplied address is executed.
+An external message call to an address specified by the caller is executed. Note that the callee account might contain arbitrary code and could re-enter any function within this contract. Reentering the contract in an intermediate state may lead to unexpected behaviour. Make sure that no state modifications are executed after this call and/or reentrancy guards are in place.
+--------------------
+In file: /tmp/contracts/test_contracts/0xfa89d6221a031ba796ccac1edae67d8c2b2fd9b1.sol:205
+
+ApproveAndCallFallBack(spender).receiveApproval(msg.sender, _value, address(this), data)
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [CREATOR], function: approveAndCall(address,uint256,bytes), txdata: 0xcae9ca51000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000022, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Low
+Contract: STONToken
+Function name: transferAnyERC20Token(address,uint256)
+PC address: 5299
+Estimated Gas Usage: 3989 - 39682
+A call to a user-supplied address is executed.
+An external message call to an address specified by the caller is executed. Note that the callee account might contain arbitrary code and could re-enter any function within this contract. Reentering the contract in an intermediate state may lead to unexpected behaviour. Make sure that no state modifications are executed after this call and/or reentrancy guards are in place.
+--------------------
+In file: /tmp/contracts/test_contracts/0xfa89d6221a031ba796ccac1edae67d8c2b2fd9b1.sol:222
+
+ERC20Interface(tokenAddress).transfer(owner, _value)
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x130800000000003, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [CREATOR], function: transferAnyERC20Token(address,uint256), txdata: 0xdc39d06d000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef0000000000000000000000000101010101010101010100010101010101010101, value: 0x0
+
+
+
+
+
+0.32user 0.10system 41:29.09elapsed 0%CPU (0avgtext+0avgdata 50424maxresident)k
+0inputs+0outputs (40major+9796minor)pagefaults 0swaps
+
+Highest version:  pragma solidity ^0.5.0;
+docker run -v /home/ubuntu/checker/src/tools_wrapper:/tmp mythril/myth analyze /tmp/contracts/test_contracts/0xfa90d6a9a8b7fcdcbbb06e441c0ecaa57f55b11e.sol --solv 0.5.0 --max-depth 22
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Low
+Contract: Cyiber
+Function name: approveAndCall(address,uint256,bytes)
+PC address: 4720
+Estimated Gas Usage: 9490 - 68407
+A call to a user-supplied address is executed.
+An external message call to an address specified by the caller is executed. Note that the callee account might contain arbitrary code and could re-enter any function within this contract. Reentering the contract in an intermediate state may lead to unexpected behaviour. Make sure that no state modifications are executed after this call and/or reentrancy guards are in place.
+--------------------
+In file: /tmp/contracts/test_contracts/0xfa90d6a9a8b7fcdcbbb06e441c0ecaa57f55b11e.sol:206
+
+ApproveAndCallFallBack(spender).receiveApproval(msg.sender, tokens, address(this), data)
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x4000001062f, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [SOMEGUY], function: approveAndCall(address,uint256,bytes), txdata: 0xcae9ca51000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef00000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000030, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Low
+Contract: Cyiber
+Function name: transferAnyERC20Token(address,uint256)
+PC address: 5082
+Estimated Gas Usage: 3989 - 39682
+A call to a user-supplied address is executed.
+An external message call to an address specified by the caller is executed. Note that the callee account might contain arbitrary code and could re-enter any function within this contract. Reentering the contract in an intermediate state may lead to unexpected behaviour. Make sure that no state modifications are executed after this call and/or reentrancy guards are in place.
+--------------------
+In file: /tmp/contracts/test_contracts/0xfa90d6a9a8b7fcdcbbb06e441c0ecaa57f55b11e.sol:223
+
+ERC20Interface(tokenAddress).transfer(owner, tokens)
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x840001, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [CREATOR], function: transferAnyERC20Token(address,uint256), txdata: 0xdc39d06d000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef0000000000000000000000000101010101010101010101010101010101010140, value: 0x0
+
+
+
+
+
+0.24user 0.17system 41:53.94elapsed 0%CPU (0avgtext+0avgdata 50548maxresident)k
+0inputs+0outputs (33major+9790minor)pagefaults 0swaps
+
+Highest version:  pragma solidity ^0.5.0;
+docker run -v /home/ubuntu/checker/src/tools_wrapper:/tmp mythril/myth analyze /tmp/contracts/test_contracts/0xfa2b9e5f4b60767d4c3ca6e316d8599311419b3e.sol --solv 0.5.0 --max-depth 22
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: ParadiseTokenSale
+Function name: constructor
+PC address: 796
+Estimated Gas Usage: 104291 - 492896
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+In file: /tmp/contracts/test_contracts/0xfa2b9e5f4b60767d4c3ca6e316d8599311419b3e.sol:491
+
+fundingGoalInEthers * 1 ether
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: 000000000000000000000000084020100120014001041000204002020201014041010508c1817010020000003800000001028000000070000a000038001402014400010000010000010000800800000001000040000000000000000000040200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000804010108200110010201024080028020801080800804104001200801020802000000000000000000000000000000000000000000000000000000000000302000000000000000000000000008, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Medium
+Contract: PDTDistribution
+Function name: drop(address,address[],uint256[])
+PC address: 808
+Estimated Gas Usage: 1943 - 8104
+An assertion violation was triggered.
+It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
+--------------------
+In file: /tmp/contracts/test_contracts/0xfa2b9e5f4b60767d4c3ca6e316d8599311419b3e.sol:659
+
+function drop(IERC20 token, address[] memory recipients, uint256[] memory values) public onlyOwner {
+    for (uint256 i = 0; i < recipients.length; i++) {
+      token.transfer(recipients[i], values[i]);
+    }
+  }
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [CREATOR], function: drop(address,address[],uint256[]), txdata: 0x7da5efc8000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020, value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: ParadiseTokenSale
+Function name: constructor
+PC address: 813
+Estimated Gas Usage: 104291 - 492896
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+In file: /tmp/contracts/test_contracts/0xfa2b9e5f4b60767d4c3ca6e316d8599311419b3e.sol:492
+
+fundingCapInEthers * 1 ether
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: 0000000000000000000000001020400100018001010101804001080101020201040008b801014002040515002001089802100200148060305880398441ac28014000046883c800000000095e1da800480880000009000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400280010140010140010201800101012080010401010401010401010401011000000000000000000000000000000000000000000000000000000000000028c800000000000000000000000002, value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: ParadiseTokenSale
+Function name: constructor
+PC address: 837
+Estimated Gas Usage: 104291 - 492896
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+In file: /tmp/contracts/test_contracts/0xfa2b9e5f4b60767d4c3ca6e316d8599311419b3e.sol:495
+
+durationInMinutes * 1 minutes
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: 0000000000000000000000000108080200008001004001800040010101800801010800040001000000000001010410020102400800080800020040200110080180000004000000000000000101041002010210080008080002000020000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000056494a12d102014a1098146a02a219249737592b033309836e01040701418803000000000000000000000000000000000000000000000000000000000000308000000000000000000000000002, value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: ParadiseTokenSale
+Function name: constructor
+PC address: 839
+Estimated Gas Usage: 104291 - 492896
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+In file: /tmp/contracts/test_contracts/0xfa2b9e5f4b60767d4c3ca6e316d8599311419b3e.sol:495
+
+start + durationInMinutes * 1 minutes
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: 000000000000000000000000101020080420048010040808400110040200044000044000010201010100018000021001020101000220084001011010002040038000000000000000000000000000100000010000000108400101101000004002000000000000000000000000000000000000000000000000000000000000000040af88440024200120003a000290102c11c002940009084c040413a00000012c0850022000112098aac32ce058930588380260124012b2b401000a22a900014000000000000000000000000000000000000000000000000000000000000028e400000000000000000000000004, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: ParadiseTokenSale
+Function name: fallback
+PC address: 1773
+Estimated Gas Usage: 1769 - 2194
+A control flow decision is made based on The block.timestamp environment variable.
+The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
+--------------------
+In file: /tmp/contracts/test_contracts/0xfa2b9e5f4b60767d4c3ca6e316d8599311419b3e.sol:457
+
+require (currentTime() < endTime)
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x4100000000000008, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x1, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: 00000000000000000000000080208004011008808004080101010108040420010810010404a080018004002020040001402004101001010104040001041000010810400400808000800000002000000000000100400101010104000004100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000180010880200101080104014080022001040801012002010104080101014008000000000000000000000000000000000000000000000000000000000000271000000000000000000000000004, value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: ParadiseTokenSale
+Function name: fallback
+PC address: 1797
+Estimated Gas Usage: 2635 - 3060
+A control flow decision is made based on The block.timestamp environment variable.
+The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
+--------------------
+In file: /tmp/contracts/test_contracts/0xfa2b9e5f4b60767d4c3ca6e316d8599311419b3e.sol:459
+
+require (currentTime() >= startTime)
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x800000000208000, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: 000000000000000000000000100801011002084010200200048080080180080240800004808000808100000002020440800404042008140200400000000001408000000400000080068010400000000000000000200804000000000000000100000000000000000000000000000000000000000000000000000000000000000000020010000002ffc40840003200a38040450104b19e20c18343f36c0a023f850120304b3abacac00252881012800409acab8444825a3a200c0400028530300400000000000000000000000000000000000000000000000000000000000030b800000000000000000000000001, value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Medium
+Contract: StandardToken
+Function name: increaseApproval(address,uint256)
+PC address: 4203
+Estimated Gas Usage: 1440 - 1915
+An assertion violation was triggered.
+It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
+--------------------
+In file: /tmp/contracts/test_contracts/0xfa2b9e5f4b60767d4c3ca6e316d8599311419b3e.sol:256
+
+allowed[msg.sender][_spender].add(_addedValue)
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x410200188000081, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [SOMEGUY], function: increaseApproval(address,uint256), txdata: 0xd73dd62300000000000000000000000000000000000000000000000000000000000000000000000000000000010000008aabaaaaaaabaaabaaaadaabeaa9eaaaa8050488, value: 0x0
+Caller: [SOMEGUY], function: increaseApproval(address,uint256), txdata: 0xd73dd623a0a0a0a0a0a0a0a0a0a0a0a00000000000000000000000000000000000000000ffffffffffffffffff000003affeaffeaffeaffeaffeaffeaffeaffeaffea4dc, value: 0x0
+
+
+
+
+
+0.65user 0.23system 1:42:33elapsed 0%CPU (0avgtext+0avgdata 50328maxresident)k
+0inputs+0outputs (0major+10472minor)pagefaults 0swaps
+
+Highest version:  pragma solidity 0.5.13;
+docker run -v /home/ubuntu/checker/src/tools_wrapper:/tmp mythril/myth analyze /tmp/contracts/test_contracts/0x2b591e99afe9f32eaa6214f7b7629768c40eeb39.sol --solv 0.5.13 --max-depth 22
+==== Exception State ====
+SWC ID: 110
+Severity: Medium
+Contract: GlobalsAndUtility
+Function name: stakeLists(address,uint256)
+PC address: 2951
+Estimated Gas Usage: 1253 - 1538
+An assertion violation was triggered.
+It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
+--------------------
+In file: /tmp/contracts/test_contracts/0x2b591e99afe9f32eaa6214f7b7629768c40eeb39.sol:835
+
+mapping(address => StakeStore[]) public stakeLists
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x48000000000000000, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x1, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [ATTACKER], function: stakeLists(address,uint256), txdata: 0x2607443b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Medium
+Contract: HEX
+Function name: stakeLists(address,uint256)
+PC address: 5749
+Estimated Gas Usage: 1187 - 1472
+An assertion violation was triggered.
+It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
+--------------------
+In file: /tmp/contracts/test_contracts/0x2b591e99afe9f32eaa6214f7b7629768c40eeb39.sol:835
+
+mapping(address => StakeStore[]) public stakeLists
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x80100100010001, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [CREATOR], function: stakeLists(address,uint256), txdata: 0x2607443b00000000000000000000000000000000000000000000000000000000000000008080200180000000000001000000000000000000000000008000000000000000, value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: GlobalsAndUtility
+Function name: currentDay()
+PC address: 7066
+Estimated Gas Usage: 389 - 765
+The arithmetic operator can underflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+In file: /tmp/contracts/test_contracts/0x2b591e99afe9f32eaa6214f7b7629768c40eeb39.sol:983
+
+block.timestamp - LAUNCH_TIME
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x40000000000000001, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [CREATOR], function: currentDay(), txdata: 0x5c9302c9, value: 0x0
+
+
+
+
+
+0.69user 0.52system 2:12:04elapsed 0%CPU (0avgtext+0avgdata 50480maxresident)k
+0inputs+0outputs (0major+10213minor)pagefaults 0swaps
+
+Highest version:  pragma solidity 0.5.7;
+docker run -v /home/ubuntu/checker/src/tools_wrapper:/tmp mythril/myth analyze /tmp/contracts/test_contracts/0xBBbbCA6A901c926F240b89EacB641d8Aec7AEafD.sol --solv 0.5.7 --max-depth 22
+==== Exception State ====
+SWC ID: 110
+Severity: Medium
+Contract: LRC_v2
+Function name: increaseApproval(address,uint256)
+PC address: 7240
+Estimated Gas Usage: 1357 - 1832
+An assertion violation was triggered.
+It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
+--------------------
+In file: /tmp/contracts/test_contracts/0xBBbbCA6A901c926F240b89EacB641d8Aec7AEafD.sol:224
+
+allowed[msg.sender][_spender].add(_addedValue)
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x4200000000000040, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x4200000000000040, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [CREATOR], function: approve(address,uint256), txdata: 0x095ea7b39ac2880000000000000000000000000000000000000000000000000000000000000000000003852862d991637e0d030882d363ec2a264f36ad241d44958b2180, value: 0x0
+Caller: [CREATOR], function: increaseApproval(address,uint256), txdata: 0xd73dd6230606060606060606060606060000000000000000000000000000000000000000fffffffffffcf5284680b5820200010186114448490204048220090604020280, value: 0x0
+
+
+
+
+
+1.09user 0.64system 3:21:59elapsed 0%CPU (0avgtext+0avgdata 51096maxresident)k
+0inputs+0outputs (0major+10530minor)pagefaults 0swaps
+
+Highest version:  pragma solidity ^0.7.3;
+docker run -v /home/ubuntu/checker/src/tools_wrapper:/tmp mythril/myth analyze /tmp/contracts/test_contracts/0xc944E90C64B2c07662A292be6244BDf05Cda44a7.sol --solv 0.7.3 --max-depth 22
+The analysis was completed successfully. No issues were detected.
+
+
+
+
+1.09user 0.76system 3:35:44elapsed 0%CPU (0avgtext+0avgdata 50564maxresident)k
+0inputs+0outputs (0major+11195minor)pagefaults 0swaps
+
+Highest version:  pragma solidity ^0.5.2;
+docker run -v /home/ubuntu/checker/src/tools_wrapper:/tmp mythril/myth analyze /tmp/contracts/test_contracts/0xfa2d6cd0410f9656612fd837692d6a4921946f1b.sol --solv 0.5.2 --max-depth 22
+The analysis was completed successfully. No issues were detected.
+
+
+
+
+0.91user 1.00system 4:04:33elapsed 0%CPU (0avgtext+0avgdata 50516maxresident)k
+0inputs+0outputs (0major+10537minor)pagefaults 0swaps
+

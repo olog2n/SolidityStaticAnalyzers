@@ -1,0 +1,11 @@
+#!/bin/bash
+
+source MAIAN-master/venv/bin/activate
+
+cd MAIAN-master/tool
+
+python3 maian.py -bs PATH -c STATUS
+
+cd ../../
+
+rm maian-start-STATUS

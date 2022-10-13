@@ -1,0 +1,51 @@
+FROM ubuntu:latest
+
+# install basic packages
+RUN apt-get update &&\
+        apt-get -y install\
+        wget \
+        curl \
+        unzip
+
+# install tools
+RUN apt -y install \
+        python3 \
+        python3-pip \
+        python3.10-venv
+
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+
+WORKDIR /gbc
+
+# download geth
+RUN wget https://gethstore.blob.core.windows.net/builds/geth-alltools-linux-amd64-1.10.19-23bee162.tar.gz -O geth.tar.gz
+
+# install geth
+RUN tar -xvzf geth.tar.gz
+# ARG GETH=/gbc/geth/geth-alltools-linux-amd64-1.10.19-23bee162/geth
+
+# download z3
+RUN wget https://github.com/Z3Prover/z3/archive/refs/heads/master.zip -O /gbc/z3.zip
+
+# install z3
+RUN unzip z3.zip && cd z3-master && \ 
+        python3 scripts/mk_make.py && \
+        cd build && \
+        make && \
+        make install
+
+# download MAIAN
+RUN wget https://github.com/smartbugs/MAIAN/archive/refs/heads/master.zip -O /gbc/MAIAN.zip
+
+COPY start /gbc/start
+
+RUN chmod 777 ./start
+
+RUN ./start
+
+RUN ln -s /gbc/geth-alltools-linux-amd64-1.10.19-23bee162/geth /gbc/MAIAN-master/venv/bin/geth    
+
+COPY script.js /gbc/script.js
+COPY .maian-start /gbc/.maian-start
+
+ENTRYPOINT [ "/root/.nvm/versions/node/v18.5.0/bin/node", "script.js" ] 

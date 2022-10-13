@@ -1,0 +1,223 @@
+{
+    "tools": {
+        "myth": "mythril/myth",
+        "slither": "trailofbits/eth-security-toolbox",
+        "echidna": "echidna",
+        "manticore": "trailofbits/manticore",
+        "maian": "maian"
+    },
+    "myth": {
+        "first_condition": {
+            "-v4": "",
+            "analyze": "",
+            "pro": ""
+        },
+        "second_condition": {
+            "-l": "",
+            "-a": {
+                "--infura-id": "String",
+                "--rpc": {
+                    "ganache": "",
+                    "host:port": "String"
+                },
+                "--rpctls": "Bool"
+            }
+        },
+        "last_condition": {
+            "--execution-timeout": "Int",
+            "--max-depth": "Int",
+            "--solv": "Int"
+        }
+    },
+    "slither": {
+        "first_condition": {
+            ".": "",
+            "*.sol": "String"
+        },
+        "second_condition": {
+
+        },
+        "last_condition": {
+            "--embark-overwrite-config": "",
+            "--solc-disable-warnings": "",
+            "--detect": {
+                "first_detector": "String",
+                "second_detector": "String"
+            },
+            "--exclude": {
+                "first_detector": "String",
+                "second_detector": "String"
+            },
+            "--list-detectors": "",
+            "--exclude-informational": "",
+            "--exclude-low": "",
+            "--print": "String",
+            "--filter-paths": "String",
+            "--triage-mode": "",
+            "--config-file": "JSON"
+        }
+    },
+    "echidna": {
+        "first_condition": {
+            "*.sol": "String"
+        },
+        "second_condition": {
+      
+        },
+        "last_condition": {
+            "--testMode": {
+                "property": "String",
+                "assertion": "String",
+                "optimization": "String",
+                "overflow": "String",
+                "exploration": "String"
+            },
+            "--testLimit": "String",
+            "--seqLen": "Int",
+            "--shrinkLimit": "Int",
+            "--contractAddr": "String",
+            "--coverage": "Bool",
+            "--corpusDir": "String",
+            "--deployer": "String",
+            "--sender": "[String]",
+            "--psender": "String",
+            "--prefix": "String",
+            "--propMaxGas": "Int",
+            "--testMasxGas": "Int",
+            "--maxGasprice": "Int",
+            "--maxTimeDelay": "Int",
+            "--maxBlockDelay": "Int",
+            "--solsArgs": "[String]",
+            "--cryticArgs": "[String]",
+            "--quiet": "Bool",
+            "--dashboard": "Bool",
+            "--format": {
+                "text": "String",
+                "json": "String",
+                "none": "String"
+            },
+            "--balanceContract": "Int",
+            "--balanceAddr": "Int",
+            "--maxValue": "Int",
+            "--testDestuction": "Bool"
+        }
+    },
+    "manticore": {
+        "first_condition": {
+
+        },
+        "second_condition": {
+            "-h": "",
+            "-v": ""
+        },
+        "last_condition": {
+            "--compile-force-framework": "String",
+            "--compile-remove-metadata": "",
+            "--compile-custom-build": "String",
+            "--ignore-compile": "",
+            "--solc": "String",
+            "--solc-remaps": "String",
+            "--solc-args": "String[]",
+            "--solc-disable-warnings": "",
+            "--solc-working-dir": "String",
+            "--solc-solcs-select": "String",
+            "--solc-solcs-bin": "String",
+            "--solc-standard-json": "",
+            "--solc-force-legacy-json": "",
+            "--truffle-ignore-compile": "",
+            "--truffle-build-directory": "String",
+            "--truffle-version": "String",
+            "--truffle-overwrite-config": "",
+            "--truffle-overwrite-version": "String",
+            "--embark-ignore-compile": "",
+            "--embark-overwrite-config": "",
+            "--dapp-ignore-compile": "",
+            "--etherlime-ignore-compile": "",
+            "--etherlime-compile-arguments": "",
+            "--etherscan-only-source-code": "",
+            "--etherscan-only-bytecode": "",
+            "--etherscan-apikey": "String",
+            "--arbiscan-apikey": "String",
+            "--polygonscan-apikey": "String",
+            "--avax-apikey": "String",
+            "--ftmscan-apikey": "String",
+            "--bscan-apikey": "String",
+            "--etherscan-export-directory": "String",
+            "--waffle-ignore-compile": "",
+            "--waffle-config-file": "String",
+            "--npx-disable": "",
+            "--buidler-ignore-compile": "",
+            "--buidler-cache-directory": "String",
+            "--buidler-skip-directory-name-fix": "",
+            "--hardhat-ignore-compile": "",
+            "--hardhat-cache-directory": "String",
+            "--hardhat-artifacts-directory": "String",
+            "--coverage": "String",
+            "--no-colors": "",
+            "--policy": "String",
+            "--workspace": "String",
+            "--version": "",
+            "--config": "String",
+            "--entrysymbol": "String",
+            "--data": "String",
+            "--file": "String",
+            "--env": "String",
+            "--pure-symbolic": "",
+            "--verbose-trace": "",
+            "--txlimit": "Int",
+            "--txnocoverage": "",
+            "--txnoether": "",
+            "--txaccount": "String",
+            "--txpreconstrain": "",
+            "--contract": "String",
+            "--list-detectors": "",
+            "--exclude": "String",
+            "--exclude-all": "",
+            "--avoid-constant": "",
+            "--limit-loops": "",
+            "--no-testcases": "",
+            "--only-alive-testcases": "",
+            "--thorough-mode": "",
+            "--core.compress_states": "String",
+            "--core.execs_per_intermittent_cb": "String",
+            "--core.HOST": "String",
+            "--core.PORT": "Int",
+            "--core.fast_fail": "String",
+            "--core.timeout": "Int",
+            "--core.cluster": "String",
+            "--core.procs": "String",
+            "--core.mprocessing": "String",
+            "--core.seed": "String",
+            "--smt.timeout": "Int",
+            "--smt.memory": "Int",
+            "--smt.maxsolutions": "Int",
+            "--smt.z3_bin": "String",
+            "--smt.cvc4_bin": "String",
+            "--smt.yices_bin": "String",
+            "--smt.boolector_bin": "String",
+            "--smt.defaultunsat": "String",
+            "--smt.optimize": "String",
+            "--smt.solver": "String",
+            "--workspace.prefix": "String",
+            "--workspace.dir": "String",
+            "--evm.oog": "String",
+            "--evm.txfail": "String",
+            "--evm.calldata_max_offset": "Int",
+            "--evm.calldata_max_size": "Int",
+            "--evm.ignore_balance": "Int",
+            "--evm.defaultgas": "Int",
+            "--evm.sha3": "String",
+            "--evm.sha3timeout": "Int",
+            "--evm.events": "String",
+            "--cli.profile": "String",
+            "--cli.explore_balance": "String",
+            "--cli.skip_reverts": "String",
+            "--cli.target_func": "String",
+            "--wasm.decode_names": "String",
+            "--main.recursionlimit": "String",
+            "--native.fast_crash": "String",
+            "--native.stdin_size": "Int",
+            "argv": "String[]"
+        }
+    }
+}
