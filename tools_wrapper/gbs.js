@@ -58,7 +58,7 @@ const parse_version = (path) => {
         let rhsToken;
 
         for(i = 0; i < lhsTokens.length; i++) {
-            lhsToken = lhsTokens[i].match(this.regex);  
+            lhsToken = lhsTokens[i].match(this.regex);
             rhsToken = rhsTokens[i].match(this.regex);
 
             if(Number(lhsToken) > Number(rhsToken)) {
@@ -152,9 +152,12 @@ async function start() {
             console.log('Highest version: ', Highest);
         } else {
             parse_version(path);
-            console.log("Highest version: ", solcVersion);
-            const version = solcVersion.split(' ')[2];
-            Highest = version.match(this.regex);
+            console.log(solcVersion);
+            let version = solcVersion.split(' ')[2];
+            if(version[0] == '^'){
+                version = version.split('^')[1];
+            }
+            Highest = version.slice(0, version.length - 1);
         }
 
         this.path = Path.parse(argument.toolArgs[1]);
@@ -171,7 +174,7 @@ async function start() {
             });
         } else if (current_tool == "slither") {
             console.log('docker run -a stdin -a stderr -a stdout --rm --entrypoint="" -v ' + process.env.PWD + ':/home/ethsec/contracts ' + argument.toolArgs[0] + " slither " + "./contracts/" + argument.toolArgs[1] + default_print +' --solc-disable-warnings --solc-solcs-select ' + Highest);
-            exec('docker run -a stdin -a stderr -a stdout --rm --entrypoint="" -v ' + process.env.PWD + ':/home/ethsec/contracts ' + argument.toolArgs[0] + " slither " + "./contracts/" + this.path.dir + '/' + this.path.base + default_print +' --solc-disable-warnings --solc-solcs-select ' + Highest, (error, stdout, stderr) => {
+            exec('docker run -a stdin -a stderr -a stdout --rm --entrypoint="" -v ' + process.env.PWD + ':/home/ethsec/contracts ' + argument.toolArgs[0] + " slither " + "./contracts" + this.path.dir + '/' + this.path.base + default_print +' --solc-disable-warnings --solc-solcs-select ' + Highest, (error, stdout, stderr) => {
                 if (error) {
                     console.log(error);
                     return;
