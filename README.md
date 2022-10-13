@@ -1,4 +1,4 @@
-# GBS Checker
+# Smart-contract Checker
 
 ## Installation
 
@@ -11,10 +11,10 @@ $ ./install
 
 Firsly, you need to go to the directory with contracts, and then starts script
 ```bash
-$ node ../gbs.js TOOL_NAME ./CONTRACT_NAME.solW
-$ node ../gbs.js slither ./FarmingFlat.sol
-$ node gbs.js <arguments>
-$ node gbs.js -h
+$ node ../scc.js TOOL_NAME ./CONTRACT_NAME.solW
+$ node ../scc.js slither ./FarmingFlat.sol
+$ node scc.js <arguments>
+$ node scc.js -h
 
 
 ## Results of slither
@@ -222,4 +222,4 @@ renounceOwnership() should be declared external:
 Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
 
 So, what this info gives to us? 
-After reading we can understand that we got reentrancy in daposit method, then we can see that we get reentrancy at internal method _harvest with full info about it
+After reading we can understand that we got reentrancy in deposit method, then we can see that we get reentrancy at internal method _harvest with full info about it

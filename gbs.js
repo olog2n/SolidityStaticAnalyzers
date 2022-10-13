@@ -95,7 +95,7 @@ async function start() {
         console.log("use: --solc-remap @openzeppelin=node_modules/@openzeppelin");
         if (process.argv.length != 4) {
             console.log("Use correct syntax: -i tool_name");
-            console.log("Example: gbs -i myth");
+            console.log("Example: scc -i myth");
         }else if (process.argv[infoPos] == "echidna") {
             console.log("Echidna through docker\n",
                         "docker pull trailofbits/eth-security-toolbox\n",
@@ -121,7 +121,7 @@ async function start() {
     } else if (process.argv[startPos] == "-arg" || process.argv[startPos] == "--arguments") {
         if (process.argv[infoPos].length != 4) {
             console.log("Use correct syntax: -arg tool_name || --arguments tool_name");
-            console.log("Example: gbs -arg myth");
+            console.log("Example: scc -arg myth");
         } else if (process.argv[infoPos] == "myth" || process.argv[infoPos] == "mythrill") {
             console.log(lexems.myth);
         } else if (process.argv[infoPos] == "echidna") {

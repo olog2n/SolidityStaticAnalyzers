@@ -8,7 +8,7 @@ let temp = data.split(':\n');
 temp.pop();
 
 for(const path of temp){
-    exec(`time node gbs.js myth contracts/test_contracts/${path}`, (error, stdout, stderr) => {
+    exec(`time node scc.js myth contracts/test_contracts/${path}`, (error, stdout, stderr) => {
         if (error) {
             console.log(error);
             return;
