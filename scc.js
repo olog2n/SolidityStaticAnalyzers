@@ -174,7 +174,7 @@ async function start() {
             });
         } else if (current_tool == "slither") {
             console.log('docker run -a stdin -a stderr -a stdout --rm --entrypoint="" -v ' + process.env.PWD + ':/home/ethsec/contracts ' + argument.toolArgs[0] + " slither " + "./contracts/" + argument.toolArgs[1] + default_print +' --solc-disable-warnings --solc-solcs-select ' + Highest);
-            exec('docker run -a stdin -a stderr -a stdout --rm --entrypoint="" -v ' + process.env.PWD + ':/home/ethsec/contracts ' + argument.toolArgs[0] + " slither " + "./contracts" + this.path.dir + '/' + this.path.base + default_print +' --solc-disable-warnings --solc-solcs-select ' + Highest, (error, stdout, stderr) => {
+            exec('docker run -a stdin -a stderr -a stdout --rm --entrypoint="" -v ' + process.env.PWD + ':/home/ethsec/contracts ' + argument.toolArgs[0] + " slither " + "./contracts/" + this.path.dir + '/' + this.path.base + default_print +' --solc-disable-warnings --solc-solcs-select ' + Highest, (error, stdout, stderr) => {
                 if (error) {
                     console.log(error);
                     return;
